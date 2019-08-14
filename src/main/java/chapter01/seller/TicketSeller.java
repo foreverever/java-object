@@ -13,6 +13,7 @@ public class TicketSeller {
         return ticketOffice;
     }
 
+    //2차 개선(audience에게 책임 위임)
     public void sellTo(Audience audience) {
         Long payment = audience.buy(ticketOffice.getTicket());
         ticketOffice.plusAmount(payment);
