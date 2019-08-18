@@ -21,18 +21,6 @@ public class Bag {
         return amount;
     }
 
-    public Invitation getInvitation() {
-        return invitation;
-    }
-
-    public Ticket getTicket() {
-        return ticket;
-    }
-
-    public void setTicket(Ticket ticket) {
-        this.ticket = ticket;
-    }
-
     public boolean hasInvitation() {
         return invitation != null;
     }
@@ -42,11 +30,9 @@ public class Bag {
     }
 
     public Long hold(Ticket ticket) {
-        if (hasInvitation()) {
-            this.ticket = ticket;
-            return 0L;
-        }
         this.ticket = ticket;
+        if (hasInvitation()) return 0L;
+
         minusAmount(ticket.getFee());
         return ticket.getFee();
     }
