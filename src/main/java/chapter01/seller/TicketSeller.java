@@ -14,9 +14,9 @@ public class TicketSeller {
     }
 
     //2차 개선(audience에게 책임 위임)
+    //4차 개선(ticketOffice에게 책임 위임)
     public void sellTo(Audience audience) {
-        Long payment = audience.buy(ticketOffice.getTicket());
-        ticketOffice.plusAmount(payment);
+        ticketOffice.sellTicketTo(audience);
 
         System.out.println("티켓 판매 완료!");
         System.out.println("남은 티켓 개수 : " + ticketOffice.remainderTicket());

@@ -1,5 +1,6 @@
 package chapter01.seller;
 
+import chapter01.audience.Audience;
 import chapter01.ticket.Ticket;
 
 import java.util.ArrayList;
@@ -24,15 +25,16 @@ public class TicketOffice {
         return amount;
     }
 
-    public Ticket getTicket() {
-        return tickets.remove(0);
-    }
-
     public int remainderTicket() {
         return tickets.size();
     }
 
     public void plusAmount(long amount) {
         this.amount += amount;
+    }
+
+    public void sellTicketTo(Audience audience) {
+        Long payment = audience.buy(tickets.remove(0));
+        plusAmount(payment);
     }
 }
