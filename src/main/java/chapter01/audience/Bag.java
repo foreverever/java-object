@@ -40,4 +40,14 @@ public class Bag {
     public void minusAmount(Long fee) {
         this.amount -= fee;
     }
+
+    public Long hold(Ticket ticket) {
+        if (hasInvitation()) {
+            this.ticket = ticket;
+            return 0L;
+        }
+        this.ticket = ticket;
+        minusAmount(ticket.getFee());
+        return ticket.getFee();
+    }
 }

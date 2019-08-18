@@ -12,14 +12,9 @@ public class Audience {
     public Bag getBag() {
         return bag;
     }
-
+    
+    //3차 개선 (bag에게 책임 위임)
     public Long buy(Ticket ticket) {
-        if (bag.hasInvitation()) {
-            bag.setTicket(ticket);
-        } else {
-            bag.setTicket(ticket);
-            bag.minusAmount(ticket.getFee());
-        }
-        return ticket.getFee();
+        return bag.hold(ticket);
     }
 }
